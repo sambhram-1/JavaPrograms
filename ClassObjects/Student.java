@@ -1,4 +1,4 @@
-package Strings;
+package ClassObjects;
 
 public class Student {
     String name;

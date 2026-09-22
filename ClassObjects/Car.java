@@ -1,5 +1,4 @@
-package Strings;
-
+package ClassObjects;
 public class Car {
     String Brand;
     String Model;
@@ -11,7 +10,7 @@ public class Car {
         System.out.println("Model: "+Model);
         System.out.println("Color: "+Color);
         System.out.println("Year: "+Year);
-        System.out.println("Mileage: "+mileage);
+        System.out.println("Mileage: "+mileage+"\n");
     }
 
 public static void main(String[]args){
