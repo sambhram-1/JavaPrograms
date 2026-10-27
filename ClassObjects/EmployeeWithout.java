@@ -1,5 +1,4 @@
 package ClassObjects;
-
 public class EmployeeWithout {
     String name;
     int age;
