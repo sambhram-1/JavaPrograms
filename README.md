@@ -1,5 +1,6 @@
 # JavaPrograms
 Java Programs taught in class
+A collection of Java programs written while learning and practising Java programming.
 Syntax for creating class
  classname objectname = new classname
  Example: Requires import java.util.*; 
