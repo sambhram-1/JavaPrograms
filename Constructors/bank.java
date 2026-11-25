@@ -1,37 +1,23 @@
 public class bank {
-    
-        String HolderName;
-        int AccountNumber;
-        double Balance;
-        
-        bank(String HolderName, int AccountNumber, double Balance){
-            this.HolderName = HolderName;
-            this.AccountNumber = AccountNumber;
-            this.Balance = Balance;
-        }
-void displayDetails(){
-            System.out.println("Account Holder Name: " + HolderName);
-            System.out.println("Account Number: " + AccountNumber);
-            System.out.println("Account Balance: " + Balance);
-        }
-        void withdraw(double amount){
-            if(amount <= Balance){
-                Balance -= amount;
-                System.out.println("Withdrawal of " + amount + " successful. New balance: " + Balance);
-            } else {
-                System.out.println("Insufficient balance. Withdrawal failed.");
-            }
-        }
-        void deposit(double amount){
-            Balance += amount;
-            System.out.println("Deposit of " + amount + " successful. New balance: " + Balance);
-        }
-        public static void main(String[] args) {
-            bank b1  = new bank("shri", 123456, 1000.0);
-            b1.displayDetails();
-            b1.deposit(500.0);
-            b1.withdraw(200.0);
-            b1.withdraw(1500.0);
-        }
-      
+    private final String accountHolder;
+    private double balance;
+    bank(String accountHolder, double openingBalance) {
+        if (openingBalance < 0) throw new IllegalArgumentException("Opening balance cannot be negative");
+        this.accountHolder = accountHolder; this.balance = openingBalance;
     }
+    void deposit(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Deposit must be positive");
+        balance += amount;
+    }
+    boolean withdraw(double amount) {
+        if (amount <= 0) throw new IllegalArgumentException("Withdrawal must be positive");
+        if (amount > balance) return false;
+        balance -= amount; return true;
+    }
+    void display() { System.out.printf("%s - Balance: %.2f%n", accountHolder, balance); }
+
+    public static void main(String[] args) {
+        bank account = new bank("Sample Customer", 1000);
+        account.deposit(500); account.withdraw(200); account.display();
+    }
+}
